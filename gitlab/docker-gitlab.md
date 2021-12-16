@@ -1,0 +1,1 @@
+## sudo docker run -d --hostname 47.107.61.79 -p 443:443 -p 80:80 -p 222:22  --name gitlab  --restart always  -v /opt/docker/gitlab/config:/etc/gitlab -v /opt/docker/gitlab/logs:/var/log/gitlab -v /opt/docker/gitlab/data:/var/opt/gitlab gitlab/gitlab-ce
