@@ -1,0 +1,6 @@
+docker run -p 10800:10800 --name minio \
+    -e "MINIO_ACCESS_KEY=myminio" \
+    -e "MINIO_SECRET_KEY=123456" \
+    -v /home/myminio/Program/docker/minio/data:/opt/module/minio \
+    -v /home/myminio/Program/docker/minio/config:/root/.minio \
+    minio/minio server /data
