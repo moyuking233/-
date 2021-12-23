@@ -1,6 +1,16 @@
-docker run -p 10800:10800 --name minio \
+docker run -p 10800:9000 --name minio \
     -e "MINIO_ACCESS_KEY=myminio" \
     -e "MINIO_SECRET_KEY=12345678" \
     -v /home/myminio/Program/docker/minio/data:/opt/module/minio \
     -v /home/myminio/Program/docker/minio/config:/root/.minio \
     minio/minio server /data
+
+
+docker run \
+  -p 19000:9000 \
+  -p 19001:9001 \
+  -e "MINIO_ROOT_USER=myminio" \
+  -e "MINIO_ROOT_PASSWORD=KKSK12345678" \
+  -v /home/myminio/Program/docker/minio/data:/opt/module/minio \
+  -v /home/myminio/Program/docker/minio/config:/root/.minio \
+  quay.io/minio/minio server /data --console-address ":9001"
