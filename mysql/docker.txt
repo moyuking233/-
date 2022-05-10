@@ -1,0 +1,17 @@
+
+  docker run -p 9527:3306 --name mysql -e MYSQL_ROOT_PASSWORD=mysql%123456 -d mysql:5.7
+
+  docker exec -it mysql bash
+
+  mysql -uroot -p
+  (输入密码)
+
+  grant all privileges on *.* to root@'%' identified by 'mysql%123456' with grant option;
+
+  flush privileges;
+
+  quit;
+
+  firewall-cmd --zone=public --add-port=9527/tcp --permanent
+
+  firewall-cmd --reload
