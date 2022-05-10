@@ -14,3 +14,16 @@ docker run \
   -v /home/myminio/Program/docker/minio/data:/opt/module/minio \
   -v /home/myminio/Program/docker/minio/config:/root/.minio \
   quay.io/minio/minio server /data --console-address ":9001"
+
+
+https配置：
+(要在/etc/hosts文件里添加域名映射)
+docker run \
+  -p 19000:9000 \
+  -p 19001:9001 \
+  -e "MINIO_ROOT_USER=myminio" \
+  -e "MINIO_ROOT_PASSWORD=KKSK12345678" \
+  --network=host \
+  -v /home/myminio/Program/docker/minio/data:/opt/module/minio \
+  -v /home/myminio/Program/docker/minio/config:/root/.minio \
+  quay.io/minio/minio server /data --console-address "domain.com:19001" --address "domain.com:19000"
