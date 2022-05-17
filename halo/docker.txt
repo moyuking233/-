@@ -1,0 +1,10 @@
+https://docs.halo.run/getting-started/install/docker
+具体怎么弄直接看文档
+
+mkdir ~/.halo && cd ~/.halo
+
+wget https://dl.halo.run/config/application-template.yaml -O ./application.yaml
+
+vim application.yaml
+
+docker run -it -d --name halo -p 8090:8090 -v ~/.halo:/root/.halo --restart=unless-stopped halohub/halo:1.5.3
