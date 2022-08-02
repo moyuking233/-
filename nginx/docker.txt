@@ -1,10 +1,16 @@
 #以安装nginx 1.18版本为例
 docker pull nginx：1.18
+
 mkdir -p /usr/local/nginx/{conf,html,logs,ssl}
+
 docker run --name nginx -p 80:80 -d nginx：1.18 #此容器只用来生成配置文件，用完后就删
+
 docker cp nginx:/etc/nginx/nginx.conf /usr/local/nginx/conf/ #通过docker cp 命令把容器的配置文件复制到之前创建的文件夹里
+
 docker cp nginx:/etc/nginx/conf.d /usr/local/nginx/
+
 docker rm nginx -f #强制删除刚才启动的nginx服务，如果不想的强制删除也可以docker stop nginx,docker rm nginx
+
 #拿到的证书文件丢到对应文件夹
 vim /usr/local/nginx/nginx.conf #修改配置文件
 
@@ -31,6 +37,7 @@ server {
            proxy_set_header Host $host;
            proxy_pass http://xxx.com:8090/;
         }
+
 
     }
 
